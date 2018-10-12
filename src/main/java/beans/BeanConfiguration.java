@@ -1,5 +1,6 @@
 package beans;
 
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,10 +14,16 @@ public class BeanConfiguration {
 		
 	}
 	
-	@Bean
+	@Bean (autowire=Autowire.BY_NAME)
 	public PlayerEditor playerEditor() {
-		PlayerEditorImpl bean = new PlayerEditorImpl();
-		bean.setPlayerDao(playerDao());
+		PlayerEditorImpl bean = new PlayerEditorImpl(playerDao());
+		//bean.setPlayerDao(playerDao());
+		return bean;
+	}
+	
+	@Bean
+	public PlayerDao playerDaoJdbc() {
+		PlayerDaoJdbcImpl bean = new PlayerDaoJdbcImpl();
 		return bean;
 	}
 

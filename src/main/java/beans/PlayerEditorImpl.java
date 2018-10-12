@@ -4,6 +4,11 @@ public class PlayerEditorImpl implements PlayerEditor {
 	
 	private PlayerDao playerDao;
 	
+	//Adding Constructor
+	public PlayerEditorImpl(PlayerDao playerDao) {
+		this.playerDao = playerDao;
+	}
+	
 
 	public PlayerDao getPlayerDao() {
 		return playerDao;
