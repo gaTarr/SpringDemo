@@ -1,16 +1,33 @@
 package beans;
 
+
 import java.util.List;
 
-public interface PlayerDao {
-	
-	public void insert(Player player);
-	public void update(Player player);
-	public void update(List<Player> players);
-	public void delete(int playerNum);
-	public Player find(int playerNum);
-	public List<Player> find(List<Integer> playerNums);
-	public List<Player> find(String name);
-	public List<Player> find(boolean redshirted);
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
+public class PlayerDao {
+	
+	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("springhawkeyeroster");
+
+	public void insertPlayer(Player playerToAdd) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(playerToAdd);
+		em.getTransaction().commit();
+		em.close();
+		
+	}
+
+	public List<Player> getAllPlayers() {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		String q = "select p from Player p";
+		TypedQuery<Player> typedQuery = em.createQuery(q, Player.class);
+		List<Player> all = typedQuery.getResultList();
+		emfactory.close();
+		return all;
+	}
 }

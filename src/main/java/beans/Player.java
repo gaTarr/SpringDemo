@@ -1,26 +1,37 @@
 package beans;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="players")
 public class Player {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 
 	private int number;
 	private String name;
 	private String position;
-	private Date gradYear;
+	private int enrollYear;
+	private int gradYear;
 	private boolean redshirted;
 	
 	public Player() {
 		
 	}
 
-	public Player(int number, String name, String position, Date gradYear, boolean redshirted) {
+	public Player(int number, String name, String position, int enrollYear, boolean redshirted) {
 		super();
 		this.number = number;
 		this.name = name;
 		this.position = position;
-		this.gradYear = gradYear;
+		this.enrollYear = enrollYear;
 		this.redshirted = redshirted;
+		setGradYear();
 	}
 	
 
@@ -29,6 +40,14 @@ public class Player {
 		this.number = number;
 		this.name = name;
 		this.position = position;
+	}	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getNumber() {
@@ -54,13 +73,26 @@ public class Player {
 	public void setPosition(String position) {
 		this.position = position;
 	}
+	
 
-	public Date getGradYear() {
-		return gradYear;
+	public int getEnrollYear() {
+		return enrollYear;
 	}
 
-	public void setGradYear(Date gradYear) {
+	public void setEnrollYear(int enrollYear) {
+		this.enrollYear = enrollYear;
+	}
+
+	public void setGradYear() {
+		int gradYear = (this.enrollYear + 4);
+		if (isRedshirted()) {
+			gradYear = (this.enrollYear + 5);
+		}
 		this.gradYear = gradYear;
+	}
+	
+	public int getGradYear() {
+		return gradYear;
 	}
 
 	public boolean isRedshirted() {
@@ -73,9 +105,11 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [number=" + number + ", name=" + name + ", position=" + position + ", gradYear=" + gradYear
-				+ ", redshirted=" + redshirted + "]";
+		return "Player [id=" + id + ", number=" + number + ", name=" + name + ", position=" + position + ", enrollYear="
+				+ enrollYear + ", gradYear=" + gradYear + ", redshirted=" + redshirted + "]";
 	}
+
+
 	
 	
 }
