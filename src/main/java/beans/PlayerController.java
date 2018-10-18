@@ -29,6 +29,7 @@ public class PlayerController {
 		public ModelAndView ProcessPlayer(Player player) {
 			System.out.println("In processPlayer");
 			ModelAndView modelAndView = new ModelAndView();
+			player.setGradYear();  //added 10/18/18
 			dao.insertPlayer(player);
 			System.out.println("Value in getName " + player.getName());
 			modelAndView.setViewName("playerResult");

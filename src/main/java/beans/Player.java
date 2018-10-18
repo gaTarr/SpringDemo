@@ -21,7 +21,7 @@ public class Player {
 	private boolean redshirted;
 	
 	public Player() {
-		
+		setGradYear();		
 	}
 
 	public Player(int number, String name, String position, int enrollYear, boolean redshirted) {
@@ -84,9 +84,9 @@ public class Player {
 	}
 
 	public void setGradYear() {
-		int gradYear = (this.enrollYear + 4);
+		int gradYear = (getEnrollYear() + 4);
 		if (isRedshirted()) {
-			gradYear = (this.enrollYear + 5);
+			gradYear = (getEnrollYear() + 5);
 		}
 		this.gradYear = gradYear;
 	}

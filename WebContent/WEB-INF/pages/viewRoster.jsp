@@ -29,6 +29,10 @@
 				<td>${item.enrollYear}</td>
 			</tr>
 			<tr>
+				<td>Elegibility Through</td>
+				<td>${item.gradYear}</td>
+			</tr>
+			<tr>
 				<td>Redshirted</td>
 				<td>${item.redshirted}</td>
 			</tr>
