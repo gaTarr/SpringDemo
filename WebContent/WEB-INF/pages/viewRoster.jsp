@@ -7,9 +7,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel='stylesheet' type='text/css' href= 'styles.css'>
+
 <title>Roster</title>
 </head>
 <body>
+<div class="wrapper">
+	<h2>Iowa Football Roster</h2>
 	<c:forEach items="${all}" var="item">
 		<table>
 			<tr>
@@ -43,5 +50,10 @@
 		<br />
 	</c:forEach>
 	<a href="form.mvc">Add a new Player</a>
+	
+	<script src= 'main.js'></script>
+	
+</div> <!-- End Wrapper Div -->
+	
 </body>
 </html>

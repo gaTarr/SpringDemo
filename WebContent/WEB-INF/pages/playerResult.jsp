@@ -8,9 +8,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel='stylesheet' type='text/css' href= 'styles.css'>
+
 <title>Results Page</title>
 </head>
-<body> <h2>Add Player Result</h2>
+<body> 
+<div class="wrapper">
+
+<h2>Add Player Result</h2>
     <table>
         <tr>
             <td>Name</td>
@@ -38,6 +46,11 @@
         </tr>
         </table>
 <a href = "viewAll.mvc">View Roster</a>
+
+<script src= 'main.js'></script>
+
+</div> <!-- End Wrapper Div -->
+
 </body>
 
 </html>

@@ -27,7 +27,7 @@ public class PlayerDao {
 		String q = "select p from Player p";
 		TypedQuery<Player> typedQuery = em.createQuery(q, Player.class);
 		List<Player> all = typedQuery.getResultList();
-		emfactory.close();
+		//emfactory.close();
 		return all;
 	}
 }
